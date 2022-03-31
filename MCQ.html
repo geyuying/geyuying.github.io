@@ -1,0 +1,184 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Bridging Video-text Retrieval with Multiple Choice Questions</title>
+
+<!-- Meta tags for search engines to crawl -->
+<meta name="robots" content="index,follow">
+<meta name="description" content="We introduce a novel pretext task, Multiple Choice Questions (MCQ), for video-text pre-training to receive the benefits of both “dual- encoder” and “joint-encoder” methods, i.e., enhancing fine-grained semantic associations between video and text features at the same time preserving high retrieval efficiency.">
+<meta name="keywords" content="Video Text Pretrain; Video Text Retrieval; Computer Vision; Deep Learning">
+<link rel="author" href="https://geyuying.github.io/">
+
+<!-- Fonts and stuff -->
+<link href="./files/css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="./files/project.css" media="screen">
+<link rel="stylesheet" type="text/css" media="screen" href="./files/iconize.css">
+<script async="" src="./files/prettify.js"></script>
+
+
+</head>
+
+<body>
+  <div id="content">
+    <div id="content-inner">
+
+      <div class="section head">
+        <h1>Bridging Video-text Retrieval with Multiple Choice Questions</h1>
+
+	<div class="authors">
+        <a href='https://geyuying.github.io/' target="_blank">Yuying Ge</a><sup></sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	 <a href='https://geyixiao.com//' target="_blank">Yixiao Ge</a><sup></sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   <a href='https://xh-liu.github.io/' target="_blank">Xihui Liu</a><sup></sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	  Dian Li</a><sup></sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        	 <a href='https://www.linkedin.com/in/YingShanProfile/' target="_blank">Ying Shan</a><sup></sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   Xiaohu Qie</a><sup></sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	  <a href='http://luoping.me//' target="_blank">Ping Luo</a><sup></sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	  </a><sup></sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</div>
+
+	<div class="affiliations">
+	          The University of Hong Kong</a><sup></sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	 ARC Lab</a><sup></sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   UC Berkeley</a><sup></sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	  Tencent PCG</a><sup></sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</div>
+
+	<!-- <div class="venue">International Conference on Learning Representations (<a href="https://iclr.cc/" target="_blank">ICLR</a>) 2020 </div> -->
+
+    </div>
+
+    <center><img src="./MCQ/framework.jpg" border="0" width="80%"></center>
+
+        <div class="section code">
+	<h2>Code</h2>
+	<p>
+Our code and pre-trained models will be released later.
+	</p>
+      </div>
+
+<div class="section abstract">
+	<h2>Abstract</h2>
+	<br>
+	<p>
+Pre-training a model to learn transferable video-text representation for retrieval has attracted a lot of attention in recent years. Previous dominant works mainly adopt two separate encoders for efficient retrieval, but ignore local associations between videos and texts. Another line of research uses a joint encoder to interact video with texts, but results in low efficiency since each text-video pair needs to be fed into the model. In this work, we enable fine-grained video-text interactions while maintaining high efficiency for retrieval via a novel pretext task, dubbed as Multiple Choice Questions (MCQ), where a parametric module BridgeFormer is trained to answer the “questions” constructed by the text features via resorting to the video features. Specifically, we exploit the rich semantics of text (i.e., nouns and verbs) to build questions, with which the video encoder can be trained to capture more regional content and temporal dynamics. In the form of questions and answers, the semantic associations between local video-text features can be properly established. BridgeFormer is able to be removed for downstream retrieval, rendering an efficient and flexible model with only two encoders. Our method outperforms state-of-the-art methods on the popular text-to-video retrieval task in five datasets with different experimental setups (i.e., zero-shot and fine-tune), including HowTo100M (one million videos). We further conduct zero-shot action recognition, which can be cast as video-to-text retrieval, and our approach also significantly surpasses its counterparts. As an additional benefit, our method achieves competitive results with much shorter pre-training videos on single-modality downstream tasks, e.g., action recognition with linear evaluation.
+	</p>
+      </div>
+
+<div class="section results">
+	<h2>Results</h2>
+	<br>
+
+      <font size="4">1. Experiments of text-to-video retrieval on MSR-VTT test set with 1K videos.
+
+      <br>
+      <br>
+
+    <center><img src="./MCQ/msrvtt.jpg" border="0" width="80%"></center>
+
+      <br>
+      <br>
+
+    <font size="4">2. Experiments of text-to-video retrieval on different datasets.
+
+      <br>
+      <br>
+
+    <center><img src="./MCQ/msvd.jpg" border="0" width="80%"></center>
+
+      <br>
+      <br>
+
+    <font size="4">3. Experiments of zero-shot text-to-video retrieval on the large-scale HowTo100M.
+
+      <br>
+      <br>
+
+    <center><img src="./MCQ/howto.jpg" border="0" width="40%"></center>
+
+      <br>
+      <br>
+
+    <font size="4">4. Experiments of zero-shot action recognition (a) and action recognition with linear evaluation (b).
+
+      <br>
+      <br>
+
+    <center><img src="./MCQ/action.jpg" border="0" width="40%"></center>
+      <br>
+
+
+</div>
+
+		<div class="section visualization">
+	<h2>Visualization</h2>
+	<br>
+
+      <font size="4">1. Cross-modality attention between the text tokens of noun questions and video tokens from BridgeFormer.
+
+      <br>
+      <br>
+
+    <center><img src="./MCQ/vis_noun.jpg" border="0" width="80%"></center>
+
+      <br>
+      <br>
+
+      <font size="4">2. Cross-modality attention between the text tokens of verb questions and video tokens from BridgeFormer.
+
+      <br>
+      <br>
+
+    <center><img src="./MCQ/vis_verb.jpg" border="0" width="80%"></center>
+
+      <br>
+      <br>
+
+</div>
+<!--<div class="section materials">-->
+<!--	<h2>Materials</h2>-->
+<!--	<center>-->
+<!--	  <ul>-->
+
+<!--          <li class="grid">-->
+<!--	      <div class="griditem">-->
+<!--		<a href="https://arxiv.org/abs/2003.06650" target="_blank" class="imageLink"><img src="./files/arxiv.png"></a><br>-->
+<!--		  <a href="https://arxiv.org/abs/2003.06650" target="_blank">Paper</a>-->
+<!--		</div>-->
+<!--	      </li>-->
+
+        <!-- <li class="grid">
+        <div class="griditem">
+        <a href="../files/MMT-ICLR20.pdf" target="_blank" class="imageLink"><img src="./mmt/slides.jpg"></a><br>
+        <a href="../files/MMT-ICLR20.pdf" target="_blank">Slides</a>
+        </div>
+        </li> -->
+
+<!--        <li class="grid">-->
+<!--      <div class="griditem">-->
+<!--  <a href="https://github.com/yxgeee/SDA" target="_blank" class="imageLink"><img src="./files/code.png"></a><br>-->
+<!--    <a href="https://github.com/yxgeee/SDA" target="_blank">Code and Models</a>-->
+<!--  </div>-->
+<!--      </li>-->
+
+<!--	    </ul>-->
+<!--	    </center>-->
+<!--	    </div>-->
+
+<!--<br>-->
+
+
+<!--<div class="section citation">-->
+<!--	<h2>Citation</h2>-->
+<!--	<div class="section bibtex">-->
+<!--	  <pre>@misc{ge2020structured,-->
+<!--    title={Structured Domain Adaptation with Online Relation Regularization for Unsupervised Person Re-ID},-->
+<!--    author={Yixiao Ge and Feng Zhu and Rui Zhao and Hongsheng Li},-->
+<!--    year={2020},-->
+<!--    eprint={2003.06650},-->
+<!--    archivePrefix={arXiv},-->
+<!--    primaryClass={cs.CV}-->
+<!--}</pre>-->
+<!--	  </div>-->
+<!--      </div>-->
+
+</body></html>
